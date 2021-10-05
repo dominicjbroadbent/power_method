@@ -4,10 +4,19 @@
 \alias{power.method}
 \title{Implementing the Power Method}
 \usage{
-power.method(A, v = NULL, epsilon = 1e-06, max_iter = 100, plot = FALSE)
+power.method(
+  A,
+  dominant = TRUE,
+  v = NULL,
+  epsilon = 1e-06,
+  max_iter = 100,
+  plot = FALSE
+)
 }
 \arguments{
 \item{A}{square numeric matrix}
+
+\item{dominant}{TRUE/FALSE choose to find the dominant or minimal eigenvector}
 
 \item{v}{numeric vector with length equal to the number of rows of A}
 
@@ -15,13 +24,13 @@ power.method(A, v = NULL, epsilon = 1e-06, max_iter = 100, plot = FALSE)
 
 \item{max_iter}{maximum number of iterations before outputting}
 
-\item{plot}{TRUE/FALSE plot or not}
+\item{plot}{TRUE/FALSE choose to plot the error versus iterations}
 }
 \value{
-power.method() returns a list which includes a vector of errors at each iteration, a vector of the approximate eigenvector at each iteration and the dominant eigenvector of A
+power.method() returns a list which includes a vector of errors at each iteration, a vector of the approximate eigenvector at each iteration, a vector of the approximate eigenvalue at each iteration,  and the dominant eigenvector and eigenvalue of A
 }
 \description{
-Given a square matrix A, implement the Power Method to approximate the dominant eigenvector of A up to a specificed error
+Given a square matrix A, implement the Power Method to approximate the dominant or minimal eigenvector of A up to a specified error
 }
 \examples{
 A = rbind(c(1,3),4,5)
