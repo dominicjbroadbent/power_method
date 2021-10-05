@@ -8,7 +8,7 @@
 #' @param epsilon desired maximum of approximation
 #' @param max_iter maximum number of iterations before outputting
 #' @param plot TRUE/FALSE choose to plot the error versus iterations
-#' @return power.method() returns a list which includes a vector of errors at each iteration, a vector of the approximate eigenvector at each iteration, a vector of the approximate eigenvalue at each iteration,  and the dominant eigenvector and eigenvalue of A
+#' @return power.method() returns a list which includes a vector of errors at each iteration, vectors of the approximate eigenvectors/eigenvalues at each iteration, and the dominant/minimal eigenvector and eigenvalue of A
 #' @export
 #' @examples A = rbind(c(1,3),4,5)
 #' power.method(A)
@@ -28,8 +28,7 @@ power.method = function(A, dominant = TRUE, v = NULL, epsilon= 1e-06, max_iter =
     }
   }
 
-
-
+  # Finds the dominant or minimal eigenvalue and eigenvector using eigen
   if(dominant == TRUE){
     eigen_A = eigen(A)
     dom_eigenvalue = which.max(abs(eigen_A$values))
@@ -41,15 +40,21 @@ power.method = function(A, dominant = TRUE, v = NULL, epsilon= 1e-06, max_iter =
     dom_eigenvector = eigen_A$vectors[,dom_eigenvalue]
   }
 
+  # Initialise random eigenvector and correspondong eigenvalue
   b_old = c(runif(nrow(A),0,1))
   lambda_old = (A %*% b_old)[1]/b_old[1]
+
+  # Calculate error of initial guess
   error = len(abs(dom_eigenvector) - abs(b_old))
 
+
+  # Initialise output vectors
   error_vec = c(error)
   vector_approx = list(b_old)
   value_approx = c(lambda_old)
   iter = 0
 
+  # Iterate the eigenvalues/vectors using the Power Method
   while(error_vec[iter+1] > epsilon){
     iter = iter + 1
     if(iter == max_iter){
@@ -73,6 +78,7 @@ power.method = function(A, dominant = TRUE, v = NULL, epsilon= 1e-06, max_iter =
     b_old = b_new
   }
 
+  # Output contextually for minimal versus dominate
   if(dominant){
     dom_eigenvalue = (A %*% b_new)[1]/b_new[1]
     vector_approx = do.call(cbind, vector_approx)
@@ -86,6 +92,7 @@ power.method = function(A, dominant = TRUE, v = NULL, epsilon= 1e-06, max_iter =
   }
 
 
+  # Produce plot of the error versus iteration
   if(plot){
     plot(seq(0,iter),error_vec,type="l",xlab="Iteration Number", ylab="Error")
   }

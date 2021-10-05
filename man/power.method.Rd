@@ -27,7 +27,7 @@ power.method(
 \item{plot}{TRUE/FALSE choose to plot the error versus iterations}
 }
 \value{
-power.method() returns a list which includes a vector of errors at each iteration, a vector of the approximate eigenvector at each iteration, a vector of the approximate eigenvalue at each iteration,  and the dominant eigenvector and eigenvalue of A
+power.method() returns a list which includes a vector of errors at each iteration, vectors of the approximate eigenvectors/eigenvalues at each iteration, and the dominant/minimal eigenvector and eigenvalue of A
 }
 \description{
 Given a square matrix A, implement the Power Method to approximate the dominant or minimal eigenvector of A up to a specified error
