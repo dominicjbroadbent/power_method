@@ -1,0 +1,60 @@
+---
+title: "PowerMethod"
+author: "Dominic Broadbent"
+date: "05/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+power.method = function(A,v = NULL, epsilon, max_iter = 100, plot = FALSE){
+  
+  
+  eigen_A = eigen(A)
+  dominant = eigen_A$vectors[,which.max(abs(eigen_A$values))]
+  
+  b = rep(1, nrow(A))
+  error = norm(dominant - b, type="2")
+  
+  b_old = b
+  for(i in 1:N){
+    b_new = A %*% b_old
+    b_new = b_new/len(b_new)
+    b_old = b_new
+    
+  }
+
+  return(b_new)
+
+}
+```
+
+```{r}
+A = cbind(c(3,7), c(6,7))
+
+eigen_A = eigen(A)
+eigen_A
+eigen_A$vectors[,which.max(abs(eigen_A$values))]
+```
+
+```{r}
+power.method(A,100)
+powerMethod(A)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
