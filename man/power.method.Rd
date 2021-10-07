@@ -33,7 +33,7 @@ power.method() returns a list which includes a vector of errors at each iteratio
 Given a square matrix A, implement the Power Method to approximate the dominant or minimal eigenvector of A up to a specified error
 }
 \examples{
-A = rbind(c(1,3),4,5)
+A = rbind(c(1,3),c(4,5))
 power.method(A)
 eigen(A)
 
