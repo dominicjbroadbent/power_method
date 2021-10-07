@@ -1,6 +1,6 @@
 Package: MontEigen
 Type: Package
-Title: What the Package Does (Title Case)
+Title: MontEigen
 Date: 2021-10-07
 Version: 0.1.0
 Authors@R: person("Dominic", "Broadbent", email = "dominic.broadbent@bristol.ac.uk",
