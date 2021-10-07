@@ -16,7 +16,7 @@
 #'
 power.method = function(A, dominant = TRUE, v = NULL, epsilon= 1e-06, max_iter = 100, plot = FALSE){
 
-  if(!is.square.matrix(A)){
+  if(!matrixcalc::is.square.matrix(A)){
     stop("power.method() requires a square numeric matrix")
   }
   if(!is.null(v)){
