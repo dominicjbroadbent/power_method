@@ -1,2 +1,2 @@
 # MontEigen
-Monte Carlo Methods for evaluating eigenvalues of matrices
+Collection of algorithms evaluating eigenvalues and eigenvectors of matrices. Geneally focused on Monte Carlo methods. 
