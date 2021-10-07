@@ -27,6 +27,12 @@ power.method = function(A, dominant = TRUE, v = NULL, epsilon= 1e-06, max_iter =
       stop(" The vector `v` is not conformable to the matrix A in power.method()")
     }
   }
+  if(!dominant){
+    if(det(A) == 0){
+      stop("The matrix A is not invertible")
+    }
+  }
+
 
   # Finds the dominant or minimal eigenvalue and eigenvector using eigen
   if(dominant == TRUE){
