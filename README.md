@@ -1,2 +1,2 @@
-# MontEigen
-Collection of algorithms evaluating eigenvalues and eigenvectors of matrices. Generally focused on Monte Carlo methods. 
+# PowerMethod
+Implementation of the power method to evaluate dominant and minimal eigenvalues
